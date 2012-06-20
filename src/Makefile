@@ -1,4 +1,4 @@
-# Copyright (c) 2011 Kent R. Spillner <kspillner@acm.org>
+# Copyright (c) 2011, 2012 Kent R. Spillner <kspillner@acm.org>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -16,12 +16,12 @@ PROJECT_ROOT ?= $(dir $(lastword $(MAKEFILE_LIST)))/..
 
 include $(PROJECT_ROOT)/common.mk
 
-PROGS = tomatosaver_ctl tomatosaverd
+PROGS = application application_ctl
 
 all compile: ${PROGS:%.c=%}
 
 clean:
-	-rm -f *.o tomatosaver_ctl tomatosaverd
+	-rm -f *.o $(PROGS)
 
 # OBJS
 daemon.o: daemon.h log.h
@@ -30,14 +30,10 @@ log.o: log.h
 
 socket.o: log.h socket.h
 
-timer.o: timer.h
-
-window.o: log.h window.h
-
 # PROGS
-tomatosaver_ctl: log.h paths.h socket.o tomatosaver.h
+application: application.h daemon.o log.o paths.h socket.o
 
-tomatosaverd: daemon.o log.o paths.h socket.o timer.o tomatosaver.h window.o
+application_ctl: application.h log.h paths.h socket.o
 
 .PHONY: all clean compile ${SUBDIRS}
 

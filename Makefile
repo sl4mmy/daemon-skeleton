@@ -1,4 +1,4 @@
-# Copyright (c) 2011 Kent R. Spillner <kspillner@acm.org>
+# Copyright (c) 2011, 2012 Kent R. Spillner <kspillner@acm.org>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -20,17 +20,10 @@ SUBDIRS = src
 
 all clean compile: ${SUBDIRS}
 
-bootstrap:
-	mkdir ${HOME}/.tomatosaver
-	chmod go-rwx ${HOME}/.tomatosaver
-
-${SUBDIRS}: ${HOME}/.tomatosaver/
+${SUBDIRS}:
 	-@echo "===> ${CURDIR}/$@"
 	${MAKE} -C $@ ${MAKECMDGOALS}
 
-${HOME}/.tomatosaver/:
-	$(error Run 'make bootstrap' first)
-
-.PHONY: all bootstrap clean compile ${SUBDIRS}
+.PHONY: all clean compile ${SUBDIRS}
 
 .EXPORT_ALL_VARIABLES:

@@ -1,4 +1,4 @@
-# Copyright (c) 2011 Kent R. Spillner <kspillner@acm.org>
+# Copyright (c) 2011, 2012 Kent R. Spillner <kspillner@acm.org>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -12,4 +12,4 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-CFLAGS = -I/usr/X11R6/include -L/usr/X11R6/lib -lX11
+CFLAGS =
